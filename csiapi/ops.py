@@ -7,7 +7,7 @@ from . import utils
 
 #=======================================================================================================================
 def set_pointselection(SapModel,uniq_lab):
-    point_obj = etabs.cPointObj(SapModel.FrameObj)
+    point_obj = etabs.cPointObj(SapModel.PointObj)
     if isinstance(uniq_lab,str):
         ret = point_obj.SetSelected(uniq_lab,True)
         if ret == "0":
@@ -25,7 +25,7 @@ def set_frameselection(SapModel,uniq_lab):
     frame_obj = etabs.cFrameObj(SapModel.FrameObj)
     if isinstance(uniq_lab,str):
         ret = frame_obj.SetSelected(uniq_lab,True)
-        if ret == "0":
+        if ret == 0:
             return True
         else:
             return False
@@ -53,9 +53,13 @@ def set_areaselection(SapModel,uniq_lab):
 #=======================================================================================================================
 class DesignConcrete:
     def __init__(self,SapModel): # Constructor - designs concrete
-        SapModel.DesignConcrete.StartDesign()
+        if not SapModel.DesignConcrete.GetResultsAvailable():
+            SapModel.DesignConcrete.StartDesign()
+        else:
+            print("Warning!!!! Showing results only for members with available design results")
         self.frame_obj = etabs.cFrameObj(SapModel.FrameObj)
         self.design_conc = etabs.cDesignConcrete(SapModel.DesignConcrete)
+        self.sapmodel = SapModel
 
     def summary_conccolumn(self,uniq_lab):
         uniq_lab = str(uniq_lab)
@@ -105,6 +109,18 @@ class DesignConcrete:
                 print("{0} is not a concrete beam".format(uniq_lab))
         else:
             return None
+    
+    def col_concdesign_forces(self,col_frame):
+        """This works for both steel and concrete"""
+
+        [ret, NumberResults, FrameName, ComboName, Station,P, V2, V3, T, M2, M3] = \
+        self.sapmodel.DesignResults.DesignForces.ColumnDesignForces(str(col_frame),int(),[str()],\
+                                    [str()],[float()],[float()],[float()],[float()],[float()],[float()],[float()],\
+                                    etabs.eItemType.Objects)
+    
+        col_design_forces_df = pd.DataFrame(list(zip(FrameName, ComboName, Station,P, V2, V3, T, M2, M3)),
+                            columns = ["FrameName", "ComboName", "Station","P", "V2", "V3", "T", "M2", "M3"])
+        return col_design_forces_df
 
     @staticmethod
     def member_type(uniq_lab,frame_obj):
@@ -116,7 +132,7 @@ class DesignSteel:
         SapModel.DesignSteel.StartDesign()
         version = utils.version(SapModel)
         self.version = version[:2]
-        self.design_steel = etabs.cDesignSteel(utils.SapModel.DesignSteel)
+        self.design_steel = etabs.cDesignSteel(SapModel.DesignSteel)
 
     def summary_steel(self,uniq_lab):
         uniq_lab = str(uniq_lab)
@@ -174,4 +190,6 @@ class DesignSteel:
             except IndexError:
                 print("{0} is not a steel member".format(uniq_lab))
                 return None
-            
+          
+
+

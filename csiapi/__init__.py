@@ -6,5 +6,5 @@ clr.AddReference(r"System.Runtime.InteropServices")
 from System.Runtime.InteropServices import Marshal
 
 # pythonnet clr-loader try import of ETABS API DLL (ETABSv1.dll)
-etabs_api_path = r'C:\Program Files\Computers and Structures\ETABS 21\ETABSv1.dll'
+etabs_api_path = r'C:\Program Files\Computers and Structures\ETABS 19\ETABSv1.dll'
 clr.AddReference(etabs_api_path)

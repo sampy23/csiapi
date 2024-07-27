@@ -16,5 +16,6 @@ if list_frames.any():
     
     summary = utils.organise(column_list)
     print(summary)
+    csiutils.clear_selection(SapModel)
 else:
     print("No members selected")
