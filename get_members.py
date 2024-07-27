@@ -1,4 +1,4 @@
-from csiapi import csiutils,ops
+from csiapi import csiutils,ops,utils
 
 def select(item):
     csiutils.clear_selection(SapModel)
@@ -11,7 +11,8 @@ SapModel = csiutils.attach()
 user_input = int(input("Select single member or multiple? 1-single, 2-multiple: "))
 
 if user_input == 1:
-    unique_label = input("Enter member unique label: ")
+    unique_label = utils.input_float("Enter member unique label, enter negative to exit: ",\
+                                            upper = 0,reminder = "Continuing!!")
     select(unique_label)
 
 elif user_input == 2:

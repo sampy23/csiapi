@@ -56,7 +56,7 @@ class DesignConcrete:
         if not SapModel.DesignConcrete.GetResultsAvailable():
             SapModel.DesignConcrete.StartDesign()
         else:
-            print("Warning!!!! Showing results only for members with available design results")
+            print("\nWarning!!!! Showing results only for members with available design results")
         self.frame_obj = etabs.cFrameObj(SapModel.FrameObj)
         self.design_conc = etabs.cDesignConcrete(SapModel.DesignConcrete)
         self.sapmodel = SapModel
