@@ -40,3 +40,10 @@ def organise(list_data):
     select_df2 = select_df[0].value_counts()
     summary = pd.concat([select_df1,select_df2],axis=1)
     return summary
+
+def read_txt(file_name):
+    with open(file_name) as f:
+        contents = f.read()
+    contents_list = contents.split("\n")
+    unique_contents_list = set(contents_list) # remove duplicates in case duplicates are present
+    return unique_contents_list

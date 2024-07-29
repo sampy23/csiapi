@@ -189,7 +189,16 @@ class DesignSteel:
                 return True
             except IndexError:
                 print("{0} is not a steel member".format(uniq_lab))
-                return None
-          
+                return None 
+#=======================================================================================================================
+def set_combo(SapModel,combo):
+    
+    #set combo selected for output
+    SapModel.Results.Setup.SetComboSelectedForOutput(combo, True)
 
+    #check if combo is selected
+    ret, check = SapModel.Results.Setup.GetComboSelectedForOutput(combo, bool())
+    
+    return check
+#=======================================================================================================================
 

@@ -1,0 +1,1741 @@
+Load Name
+
+S1-1(D + F)
+S1-2(D + H)
+S1-3(D + F + 0.6H)
+S1-4(D + F + H)
+S2-1(D + F + LL)
+S2-2(D + H + LL)
+S2-3(D + F + 0.6H + LL)
+S2-4(D + F + H + LL)
+S3-1(D + F + Lr)
+S3-2(D + H + Lr)
+S3-3(D + F + 0.6H + Lr)
+S3-4(D + F + H + Lr)
+S4-1(D + 0.75LL + F + 0.75Lr)
+S4-2(D + H + 0.75LL + 0.75Lr)
+S4-3(D + F + 0.6H + 0.75LL + 0.75Lr)
+S4-4(D + F + H + 0.75LL + 0.75Lr)
+S5-1(D + F + 0.6W+)
+S5-2(D + F + 0.6W-)
+S5-3(D + H + 0.6W+)
+S5-4(D + H + 0.6W-)
+S5-5(D + F + 0.6H + 0.6W+)
+S5-6(D + F + 0.6H + 0.6W-)
+S5-7(D + F + H + 0.6W+)
+S5-8(D + F + H + 0.6W-)
+S6-1(D + F + 0.45W+ + 0.75LL + 0.75Lr)
+S6-2(D + F + 0.45W- + 0.75LL + 0.75Lr)
+S6-3(D + H + 0.45W+ + 0.75LL + 0.75Lr)
+S6-4(D + H + 0.45W- + 0.75LL + 0.75Lr)
+S6-5(D + F + 0.6H + 0.45W+ + 0.75LL + 0.75Lr)
+S6-6(D + F + 0.6H + 0.45W- + 0.75LL + 0.75Lr)
+S6-7(D + F + H + 0.45W+ + 0.75LL + 0.75Lr)
+S6-8(D + F + H + 0.45W- + 0.75LL + 0.75Lr)
+S7-1(0.6D + 0.6F + 0.6W+)
+S7-2(0.6D + 0.6F + 0.6W-)
+S7-3(0.6D + H + 0.6W+)
+S7-4(0.6D + H + 0.6W-)
+S7-5(0.6D + 0.6F + 0.6H + 0.6W+)
+S7-6(0.6D + 0.6F + 0.6H + 0.6W-)
+S7-7(0.6D + 0.6F + H + 0.6W+)
+S7-8(0.6D + 0.6F + H + 0.6W-)
+S8-1(D + 0.7SpecX + F)
+S8-2(D + 0.7SpecY + F)
+S8-3(D + 0.7SpecX + H)
+S8-4(D + 0.7SpecY + H)
+S8-5(D + F + 0.7SpecX + 0.6H)
+S8-6(D + F + 0.7SpecY + 0.6H)
+S8-7(D + F + 0.7SpecX + H)
+S8-8(D + F + 0.7SpecY + H)
+S8-9(D + 0.7Qx + F)
+S8-10(D + 0.7Qy + F)
+S8-11(D + 0.7Qx + H)
+S8-12(D + 0.7Qy + H)
+S8-13(D + 0.7Qx + F + 0.6H)
+S8-14(D + 0.7Qy + F + 0.6H)
+S8-15(D + 0.7Qx + F + H)
+S8-16(D + 0.7Qy + F + H)
+S8-17(D + 0.7SpecXY + F)
+S8-18(D + 0.7SpecXY + H)
+S8-19(D + F + 0.7SpecXY + 0.6H)
+S8-20(D + F + 0.7SpecXY + H)
+S8-21(D + 0.7Qxy + F)
+S8-22(D + 0.7Qxy + H)
+S8-23(D + 0.7Qxy + 0.6H + F)
+S8-24(D + 0.7Qxy + H + F)
+S8-25(D - 0.7SpecX + F)
+S8-26(D - 0.7SpecY + F)
+S8-27(D - 0.7SpecX + H)
+S8-28(D - 0.7SpecY + H)
+S8-29(D + F - 0.7SpecX + 0.6H)
+S8-30(D + F - 0.7SpecY + 0.6H)
+S8-31(D + F - 0.7SpecX + H)
+S8-32(D + F - 0.7SpecY + H)
+S8-33(D - 0.7Qx + F)
+S8-34(D - 0.7Qy + F)
+S8-35(D - 0.7Qx + H)
+S8-36(D - 0.7Qy + H)
+S8-37(D - 0.7Qx + F + 0.6H)
+S8-38(D - 0.7Qy + F +0.6H)
+S8-39(D - 0.7Qx + F + H)
+S8-40(D - 0.7Qy + F + H)
+S8-41(D - 0.7SpecXY + F)
+S8-42(D - 0.7SpecXY + H)
+S8-43(D + F - 0.7SpecXY + 0.6H)
+S8-44(D + F - 0.7SpecXY + H)
+S8-45(D - 0.7Qxy + F)
+S8-46(D - 0.7Qxy + H)
+S8-47(D - 0.7Qxy + 0.6H + F)
+S8-48(D - 0.7Qxy + H + F)
+S9-1(D + F + 0.525SpecX + 0.75LL)
+S9-2(D + F + 0.525SpecY + 0.75LL)
+S9-3(D + H + 0.525SpecX + 0.75LL)
+S9-4(D + H + 0.525SpecY + 0.75LL)
+S9-5(D + F + 0.6H + 0.525SpecX + 0.75LL)
+S9-6(D + F + 0.6H + 0.525SpecY + 0.75LL)
+S9-7(D + F + H + 0.525SpecX + 0.75LL)
+S9-8(D + F + H + 0.525SpecY + 0.75LL)
+S9-9(D + F + 0.525Qx + 0.75LL)
+S9-10(D + F + 0.525Qy + 0.75LL)
+S9-11(D + H + 0.525Qx + 0.75LL)
+S9-12(D + H + 0.525Qy + 0.75LL)
+S9-13(D + F + 0.6H + 0.525Qx + 0.75LL)
+S9-14(D + F + 0.6H + 0.525Qy + 0.75LL)
+S9-15(D + F + H + 0.525Qx + 0.75LL)
+S9-16(D + F + H + 0.525Qy + 0.75LL)
+S9-17(D + F + 0.525SpecXY + 0.75LL)
+S9-18(D + H + 0.525SpecXY + 0.75LL)
+S9-19(D + F + 0.6H + 0.525SpecXY + 0.75LL)
+S9-20(D + F + H + 0.525SpecXY + 0.75LL)
+S9-21(D + F + 0.525Qxy + 0.75LL)
+S9-22(D + H + 0.525Qxy + 0.75LL)
+S9-23(D + F + 0.6H + 0.525Qxy + 0.75LL)
+S9-24(D + F + H + 0.525Qxy + 0.75LL)
+S9-25(D + F - 0.525SpecX + 0.7LL)
+S9-26(D + F - 0.525SpecY + 0.75LL)
+S9-27(D + H - 0.525SpecX + 0.75LL)
+S9-28(D + H - 0.525SpecY + 0.75LL)
+S9-29(D + F + 0.6H - 0.525SpecX + 0.75LL)
+S9-30(D + F + 0.6H - 0.525SpecY + 0.75LL)
+S9-31(D + F + H - 0.525SpecX + 0.75LL)
+S9-32(D + F + H - 0.525SpecY + 0.75LL)
+S9-33(D + F - 0.525Qx + 0.75LL)
+S9-34(D + F - 0.525Qy + 0.75LL)
+S9-35(D + H - 0.525Qx + 0.75LL)
+S9-36(D + H - 0.525Qy + 0.75LL)
+S9-37(D + F + 0.6H - 0.525Qx + 0.75LL)
+S9-38(D + F + 0.6H - 0.525Qy + 0.75LL)
+S9-39(D + F + H - 0.525Qx + 0.75LL)
+S9-40(D + F + H - 0.525Qy + 0.75LL)
+S9-41(D + F - 0.525SpecXY + 0.75LL)
+S9-42(D + H - 0.525SpecXY + 0.75LL)
+S9-43(D + F + 0.6H - 0.525SpecXY + 0.75LL)
+S9-44(D + F + H - 0.525SpecXY + 0.75LL)
+S9-45(D + F - 0.525Qxy + 0.75LL)
+S9-46(D + H - 0.525Qxy + 0.75LL)
+S9-47(D + F + 0.6H - 0.525Qxy + 0.75LL)
+S9-48(D + F + H - 0.525Qxy + 0.75LL)
+S10-1(0.6D + 0.7SpecX + 0.6F)
+S10-2(0.6D + 0.7SpecY + 0.6F)
+S10-3(0.6D + 0.7SpecX + H)
+S10-4(0.6D + 0.7SpecY + H)
+S10-5(0.6D + 0.6F + 0.7SpecX + 0.6H)
+S10-6(0.6D + 0.6F + 0.7SpecY + 0.6H)
+S10-7(0.6D + 0.6F + 0.7SpecX + H)
+S10-8(0.6D + 0.6F + 0.7SpecY + H)
+S10-9(0.6D + 0.7Qx + 0.6F)
+S10-10(0.6D + 0.7Qy + 0.6F)
+S10-11(0.6D + 0.7Qx + H)
+S10-12(0.6D + 0.7Qy + H)
+S10-13(0.6D + 0.7Qx + 0.6F + 0.6H)
+S10-14(0.6D + 0.7Qy + 0.6F + 0.6H)
+S10-15(0.6D + 0.7Qx + 0.6F + H)
+S10-16(0.6D + 0.7Qy + 0.6F +H)
+S10-17(0.6D + 0.7SpecXY + 0.6F)
+S10-18(0.6D + 0.7SpecXY + H)
+S10-19(0.6D + 0.6F + 0.7SpecXY + 0.6H)
+S10-20(0.6D + 0.6F + 0.7SpecXY + H)
+S10-21(0.6D + 0.7Qxy + 0.6F)
+S10-22(0.6D + 0.7Qxy + H)
+S10-23(0.6D + 0.7Qxy + 0.6H + 0.6F)
+S10-24(0.6D + 0.7Qxy + H + 0.6F)
+S10-25(0.6D - 0.7SpecX + 0.6F)
+S10-26(0.6D - 0.7SpecY + 0.6F)
+S10-27(0.6D - 0.7SpecX + H)
+S10-28(0.6D - 0.7SpecY + H)
+S10-29(0.6D + 0.6F - 0.7SpecX + 0.6H)
+S10-30(0.6D + 0.6F - 0.7SpecY + 0.6H)
+S10-31(0.6D + 0.6F - 0.7SpecX + H)
+S10-32(0.6D + 0.6F - 0.7SpecY + H)
+S10-33(0.6D - 0.7Qx + 0.6F)
+S10-34(0.6D - 0.7Qy + 0.6F)
+S10-35(0.6D - 0.7Qx + H)
+S10-36(0.6D - 0.7Qy + H)
+S10-37(0.6D - 0.7Qx + 0.6F + 0.6H)
+S10-38(0.6D - 0.7Qy + 0.6F + 0.6H)
+S10-39(0.6D - 0.7Qx + 0.6F + H)
+S10-40(0.6D - 0.7Qy + 0.6F + H)
+S10-41(0.6D - 0.7SpecXY + 0.6F)
+S10-42(0.6D - 0.7SpecXY + H)
+S10-43(0.6D + 0.6F - 0.7SpecXY + 0.6H)
+S10-44(0.6D + 0.6F - 0.7SpecXY + H)
+S10-45(0.6D - 0.7Qxy + 0.6F)
+S10-46(0.6D - 0.7Qxy + H)
+S10-47(0.6D - 0.7Qxy + 0.6H + 0.6F)
+S10-48(0.6D - 0.7Qxy + H + 0.6F)
+S11-1(D + F + 0.75LL + 0.75T+)
+S11-2(D + H + 0.75LL + 0.75T+)
+S11-3(D + F + 0.6H + 0.75LL + 0.75T+)
+S11-4(D + F + H + 0.75LL + 0.75T+)
+S11-5(D + F + 0.75LL + 0.75T-)
+S11-6(D + H + 0.75LL + 0.75T-)
+S11-7(D + F + 0.6H + 0.75LL + 0.75T-)
+S11-8(D + F + H + 0.75LL + 0.75T-)
+S12-1(D + F + T+)
+S12-2(D + H + T+)
+S12-3(D + F + 0.6H + T+)
+S12-4(D + F + H + T+)
+S12-5(D + F + T-)
+S12-6(D + H + T-)
+S12-7(D + F + 0.6H + T-)
+S12-8(D + F + H + T-)
+U1-1(1.4D + 1.4F)
+U1-2(1.4D + 1.6H)
+U1-3(1.4D + 1.4F + 0.9H)
+U1-4(1.4D + 1.4F + 1.6H)
+U2-1(1.2D + 1.2F + 1.6LL + 0.5Lr)
+U2-2(1.2D + 1.6H + 1.6LL + 0.5Lr)
+U2-3(1.2D + 1.2F + 0.9H + 1.6LL + 0.5Lr)
+U2-4(1.2D + 1.2F + 1.6H + 1.6LL + 0.5Lr)
+U3-1(1.2D + 1.2F + LL + 1.6Lr)
+U3-2(1.2D + 1.6H + LL + 1.6Lr)
+U3-3(1.2D + 1.2F + 0.9H + LL + 1.6Lr)
+U3-4(1.2D + 1.2F + 1.6H + LL + 1.6Lr)
+U3-5(1.2D + 1.2F + 1.6Lr + 0.5W+)
+U3-6(1.2D + 1.6H + 1.6Lr + 0.5W+)
+U3-7(1.2D + 1.2F + 0.9H + 1.6Lr + 0.5W+)
+U3-8(1.2D + 1.2F +1.6H + 1.6Lr + 0.5W+)
+U3-9(1.2D + 1.2F + 1.6Lr + 0.5W-)
+U3-10(1.2D + 1.6H + 1.6Lr + 0.5W-)
+U3-11(1.2D + 1.2F + 0.9H + 1.6Lr + 0.5W-)
+U3-12(1.2D + 1.2F + 1.6H + 1.6Lr + 0.5W-)
+U4-1(1.2D + 1.2F + W+ + LL + 0.5Lr)
+U4-2(1.2D + 1.6H + W+ + LL + 0.5Lr)
+U4-3(1.2D + 1.2F + 0.9H + W+ + LL + 0.5Lr)
+U4-4(1.2D + 1.2F + 1.6H + W+ + LL + 0.5Lr)
+U4-5(1.2D + 1.2F + W- + LL + 0.5Lr)
+U4-6(1.2D + 1.6H+ W- + LL + 0.5Lr)
+U4-7(1.2D + 1.2F + 0.9H + W- + LL + 0.5Lr)
+U4-8(1.2D + 1.2F + 1.6H + W- + LL + 0.5Lr)
+U5-1(0.9D + W+ + 0.9F)
+U5-2(0.9D + W- + 0.9F)
+U5-3(0.9D + 1.6H + W+)
+U5-4(0.9D + 1.6H + W-)
+U5-5(0.9D + 0.9F + 0.9H + W+)
+U5-6(0.9D + 0.9F + 0.9H + W-)
+U5-7(0.9D + 0.9F + 1.6H + W+)
+U5-8(0.9D + 0.9F + 1.6H + W-)
+U6-1(1.2D + 1.2F + SpecX + LL)
+U6-2(1.2D + 1.2F + SpecY + LL)
+U6-3(1.2D + 1.6H + SpecX + LL)
+U6-4(1.2D + 1.6H + SpecY + LL)
+U6-5(1.2D + 1.2F + 0.9H + SpecX + LL)
+U6-6(1.2D + 1.2F + 0.9H + SpecY + LL)
+U6-7(1.2D + 1.2F + 1.6H + SpecX + LL)
+U6-8(1.2D + 1.2F + 1.6H + SpecY + LL)
+U6-9(1.2D + 1.2F + Qx + LL)
+U6-10(1.2D + 1.2F + Qy + LL)
+U6-11(1.2D + 1.6H + Qx + LL)
+U6-12(1.2D + 1.6H + Qy + LL)
+U6-13(1.2D + 1.2F + 0.9H + Qx + LL)
+U6-14(1.2D + 1.2F + 0.9H + Qy + LL)
+U6-15(1.2D + 1.2F + 1.6H + Qx + LL)
+U6-16(1.2D + 1.2F + 1.6H + Qy + LL)
+U6-17(1.2D + 1.2F + SpecXY + LL)
+U6-18(1.2D + 1.6H + SpecXY + LL)
+U6-19(1.2D + 1.2F + 0.9H + SpecXY + LL)
+U6-20(1.2D + 1.2F + 1.6H + SpecXY + LL)
+U6-21(1.2D + 1.2F + Qxy + LL)
+U6-22(1.2D + 1.6H + Qxy + LL)
+U6-23(1.2D + 1.2F + 0.9H + Qxy + LL)
+U6-24(1.2D + 1.2F + 1.6H + Qxy + LL)
+U6-25(1.2D + 1.2F - SpecX + LL)
+U6-26(1.2D + 1.2F - SpecY + LL)
+U6-27(1.2D + 1.6H - SpecX + LL)
+U6-28(1.2D + 1.6H - SpecY + LL)
+U6-29(1.2D + 1.2F + 0.9H - SpecX + LL)
+U6-30(1.2D + 1.2F + 0.9H - SpecY + LL)
+U6-31(1.2D + 1.2F + 1.6H - SpecX + LL)
+U6-32(1.2D + 1.2F + 1.6H - SpecY + LL)
+U6-33(1.2D + 1.2F - Qx + LL)
+U6-34(1.2D + 1.2F - Qy + LL)
+U6-35(1.2D + 1.6H - Qx + LL)
+U6-36(1.2D + 1.6H - Qy + LL)
+U6-37(1.2D + 1.2F + 0.9H - Qx + LL)
+U6-38(1.2D + 1.2F + 0.9H - Qy + LL)
+U6-39(1.2D + 1.2F + 1.6H - Qx + LL)
+U6-40(1.2D + 1.2F + 1.6H - Qy + LL)
+U6-41(1.2D + 1.2F - SpecXY + LL)
+U6-42(1.2D + 1.6H - SpecXY + LL)
+U6-43(1.2D + 1.2F + 0.9H - SpecXY + LL)
+U6-44(1.2D + 1.2F + 1.6H - SpecXY + LL)
+U6-45(1.2D + 1.2F - Qxy + LL)
+U6-46(1.2D + 1.6H - Qxy + LL)
+U6-47(1.2D + 1.2F + 0.9H - Qxy + LL)
+U6-48(1.2D + 1.2F + 1.6H - Qxy + LL)
+U7-1(0.9D + SpecX + 0.9F)
+U7-2(0.9D + SpecY + 0.9F)
+U7-3(0.9D + SpecX + 1.6H)
+U7-4(0.9D + SpecY + 1.6H)
+U7-5(0.9D + SpecX + 0.9F + 0.9H)
+U7-6(0.9D + SpecY + 0.9F + 0.9H)
+U7-7(0.9D + SpecX + 0.9F + 1.6H)
+U7-8(0.9D + SpecY + 0.9F + 1.6H)
+U7-9(0.9D + Qx + 0.9F)
+U7-10(0.9D + Qy + 0.9F)
+U7-11(0.9D + Qx + 1.6H)
+U7-12(0.9D + Qy + 1.6H)
+U7-13(0.9D + 0.9F + 0.9H + Qx)
+U7-14(0.9D + 0.9F + 0.9H + Qy)
+U7-15(0.9D + 0.9F + 1.6H + Qx)
+U7-16(0.9D + 0.9F + 1.6H + Qy)
+U7-17(0.9D + SpecXY + 0.9F)
+U7-18(0.9D + SpecXY + 1.6H)
+U7-19(0.9D + 0.9F + SpecXY + 0.9H)
+U7-20(0.9D + 0.9F + SpecXY + 1.6H)
+U7-21(0.9D + Qxy + 0.9F)
+U7-22(0.9D + Qxy + 1.6H)
+U7-23(0.9D + 0.9F + Qxy + 0.9H)
+U7-24(0.9D + 0.9F + Qxy + 1.6H)
+U7-25(0.9D - SpecX + 0.9F)
+U7-26(0.9D - SpecY + 0.9F)
+U7-27(0.9D - SpecX + 1.6H)
+U7-28(0.9D - SpecY + 1.6H)
+U7-29(0.9D - SpecX + 0.9F + 0.9H)
+U7-30(0.9D - SpecY + 0.9F + 0.9H)
+U7-31(0.9D - SpecX + 0.9F + 1.6H)
+U7-32(0.9D - SpecY + 0.9F + 1.6H)
+U7-33(0.9D - Qx + 0.9F)
+U7-34(0.9D - Qy + 0.9F)
+U7-35(0.9D - Qx + 1.6H)
+U7-36(0.9D - Qy + 1.6H)
+U7-37(0.9D + 0.9F + 0.9H - Qx)
+U7-38(0.9D + 0.9F + 0.9H - Qy)
+U7-39(0.9D + 0.9F + 1.6H - Qx)
+U7-40(0.9D + 0.9F + 1.6H - Qy)
+U7-41(0.9D - SpecXY + 0.9F)
+U7-42(0.9D - SpecXY + 1.6H)
+U7-43(0.9D + 0.9F - SpecXY + 0.9H)
+U7-44(0.9D + 0.9F - SpecXY + 1.6H)
+U7-45(0.9D - Qxy + 0.9F)
+U7-46(0.9D - Qxy + 1.6H)
+U7-47(0.9D + 0.9F - Qxy + 0.9H)
+U7-48(0.9D + 0.9F - Qxy + 1.6H)
+U9-1(1.2D + 1.2F + 1.2T+ + 0.5LL)
+U9-2(1.2D + 1.6H + 1.2T+ + 0.5LL)
+U9-3(1.2D + 1.2F + 0.9H + 1.2T+ + 0.5LL)
+U9-4(1.2D + 1.2F + 1.6H + 1.2T+ + 0.5LL)
+U9-5(1.2D + 1.2F + 1.2T- + 0.5LL)
+U9-6(1.2D + 1.6H + 1.2T- + 0.5LL)
+U9-7(1.2D + 1.2F + 0.9H + 1.2T- + 0.5LL)
+U9-8(1.2D + 1.2F + 1.6H + 1.2T- + 0.5LL)
+U10-1(1.2D + 1.2F + T+ + 1.6LL)
+U10-2(1.2D + 1.6H + T+ + 1.6LL)
+U10-3(1.2D + 1.2F + 0.9H + T+ + 1.6LL)
+U10-4(1.2D + 1.2F + 1.6H + T+ + 1.6LL)
+U10-5(1.2D + 1.2F + T- + 1.6LL)
+U10-6(1.2D + 1.6H + T- + 1.6LL)
+U10-7(1.2D + 1.2F + 0.9H + T- + 1.6LL)
+U10-8(1.2D + 1.2F + 1.6H + T- + 1.6LL)
+Qx
+Qy
+T.D.
+F
+T.D.
+H
+T.D.
+F
+H
+T.D.
+F
+H
+T.D.
+F
+T.L.
+T.D.
+H
+T.L.
+T.D.
+F
+H
+T.L.
+T.D.
+F
+H
+T.L.
+T.D.
+F
+Lr
+T.D.
+H
+Lr
+T.D.
+F
+H
+Lr
+T.D.
+F
+H
+Lr
+T.D.
+T.L.
+F
+Lr
+T.D.
+H
+T.L.
+Lr
+T.D.
+F
+H
+T.L.
+Lr
+T.D.
+F
+H
+T.L.
+Lr
+T.D.
+F
+W+
+T.D.
+F
+W-
+T.D.
+H
+W+
+T.D.
+H
+W-
+T.D.
+F
+H
+W+
+T.D.
+F
+H
+W-
+T.D.
+F
+H
+W+
+T.D.
+F
+H
+W-
+T.D.
+F
+W+
+T.L.
+Lr
+T.D.
+F
+W-
+T.L.
+Lr
+T.D.
+H
+W+
+T.L.
+Lr
+T.D.
+H
+W-
+T.L.
+Lr
+T.D.
+F
+H
+W+
+T.L.
+Lr
+T.D.
+F
+H
+W-
+T.L.
+Lr
+T.D.
+F
+H
+W+
+T.L.
+Lr
+T.D.
+F
+H
+W-
+T.L.
+Lr
+T.D.
+F
+W+
+T.D.
+F
+W-
+T.D.
+H
+W+
+T.D.
+H
+W-
+T.D.
+F
+H
+W+
+T.D.
+F
+H
+W-
+T.D.
+F
+H
+W+
+T.D.
+F
+H
+W-
+T.D.
+SpecX
+F
+T.D.
+SpecY
+F
+T.D.
+H
+SpecX
+T.D.
+H
+SpecY
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+Qx
+F
+T.D.
+Qy
+F
+T.D.
+H
+Qx
+T.D.
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+SpecXY
+F
+T.D.
+SpecXY
+H
+T.D.
+SpecXY
+F
+H
+T.D.
+SpecXY
+F
+H
+T.D.
+Qxy
+F
+T.D.
+Qxy
+H
+T.D.
+Qxy
+H
+F
+T.D.
+Qxy
+H
+F
+T.D.
+SpecX
+F
+T.D.
+SpecY
+F
+T.D.
+H
+SpecX
+T.D.
+SpecY
+H
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+Qx
+F
+T.D.
+Qy
+F
+T.D.
+H
+Qx
+T.D.
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+SpecXY
+F
+T.D.
+SpecXY
+H
+T.D.
+SpecXY
+F
+H
+T.D.
+SpecXY
+F
+H
+T.D.
+Qxy
+F
+T.D.
+Qxy
+H
+T.D.
+Qxy
+H
+F
+T.D.
+Qxy
+H
+F
+T.D.
+F
+SpecX
+T.L.
+T.D.
+F
+SpecY
+T.L.
+T.D.
+H
+SpecX
+T.L.
+T.D.
+H
+SpecY
+T.L.
+T.D.
+F
+H
+SpecX
+T.L.
+T.D.
+F
+H
+SpecY
+T.L.
+T.D.
+F
+H
+SpecX
+T.L.
+T.D.
+F
+H
+SpecY
+T.L.
+T.D.
+F
+Qx
+T.L.
+T.D.
+F
+Qy
+T.L.
+T.D.
+H
+Qx
+T.L.
+T.D.
+H
+Qy
+T.L.
+T.D.
+F
+H
+Qx
+T.L.
+T.D.
+F
+H
+Qy
+T.L.
+T.D.
+F
+H
+Qx
+T.L.
+T.D.
+F
+H
+Qy
+T.L.
+T.D.
+F
+SpecXY
+T.L.
+T.D.
+H
+SpecXY
+T.L.
+T.D.
+H
+F
+SpecXY
+T.L.
+T.D.
+H
+F
+SpecXY
+T.L.
+T.D.
+F
+Qxy
+T.L.
+T.D.
+H
+Qxy
+T.L.
+T.D.
+F
+H
+Qxy
+T.L.
+T.D.
+F
+H
+Qxy
+T.L.
+T.D.
+F
+SpecX
+T.L.
+T.D.
+F
+SpecY
+T.L.
+T.D.
+H
+SpecX
+T.L.
+T.D.
+H
+SpecY
+T.L.
+T.D.
+F
+H
+SpecX
+T.L.
+T.D.
+F
+H
+SpecX
+T.L.
+T.D.
+F
+H
+SpecX
+T.L.
+T.D.
+F
+H
+SpecY
+T.L.
+T.D.
+F
+Qy
+T.L.
+T.D.
+F
+Qy
+T.L.
+T.D.
+H
+Qx
+T.L.
+T.D.
+H
+Qy
+T.L.
+T.D.
+F
+H
+Qx
+T.L.
+T.D.
+F
+H
+Qy
+T.L.
+T.D.
+F
+H
+Qx
+T.L.
+T.D.
+F
+H
+Qy
+T.L.
+T.D.
+F
+SpecXY
+T.L.
+T.D.
+H
+SpecXY
+T.L.
+T.D.
+H
+F
+SpecXY
+T.L.
+T.D.
+H
+F
+SpecXY
+T.L.
+T.D.
+F
+Qxy
+T.L.
+T.D.
+H
+Qxy
+T.L.
+T.D.
+F
+H
+Qxy
+T.L.
+T.D.
+F
+H
+Qxy
+T.L.
+T.D.
+SpecX
+F
+T.D.
+SpecY
+F
+T.D.
+H
+SpecX
+T.D.
+H
+SpecY
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+Qx
+F
+T.D.
+Qy
+F
+T.D.
+H
+Qx
+T.D.
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+SpecXY
+F
+T.D.
+SpecXY
+H
+T.D.
+SpecXY
+F
+H
+T.D.
+SpecXY
+F
+H
+T.D.
+Qxy
+F
+T.D.
+Qxy
+H
+T.D.
+Qxy
+H
+F
+T.D.
+Qxy
+H
+F
+T.D.
+SpecX
+F
+T.D.
+SpecY
+F
+T.D.
+H
+SpecX
+T.D.
+H
+SpecY
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+Qx
+F
+T.D.
+Qy
+F
+T.D.
+H
+Qx
+T.D.
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+SpecXY
+F
+T.D.
+SpecXY
+H
+T.D.
+SpecXY
+F
+H
+T.D.
+SpecXY
+F
+H
+T.D.
+Qxy
+F
+T.D.
+Qxy
+H
+T.D.
+Qxy
+H
+F
+T.D.
+Qxy
+H
+F
+T.D.
+F
+T.L.
+T+
+T.D.
+H
+T.L.
+T+
+T.D.
+F
+H
+T.L.
+T+
+T.D.
+F
+H
+T.L.
+T+
+T.D.
+F
+T.L.
+T-
+T.D.
+H
+T.L.
+T-
+T.D.
+F
+H
+T.L.
+T-
+T.D.
+F
+H
+T.L.
+T-
+T.D.
+F
+T+
+T.D.
+H
+T+
+T.D.
+F
+H
+T+
+T.D.
+F
+H
+T+
+T.D.
+F
+T-
+T.D.
+H
+T-
+T.D.
+F
+H
+T-
+T.D.
+F
+H
+T-
+SpecX
+SpecY
+DL
+SDL
+LL-R
+LL-M
+LL-NR
+T.D.
+F
+T.D.
+H
+T.D.
+F
+H
+T.D.
+F
+H
+T.D.
+F
+T.L.
+Lr
+T.D.
+H
+T.L.
+Lr
+T.D.
+F
+H
+T.L.
+Lr
+T.D.
+F
+H
+T.L.
+Lr
+T.D.
+F
+T.L.
+Lr
+T.D.
+H
+T.L.
+Lr
+T.D.
+F
+H
+T.L.
+Lr
+T.D.
+F
+H
+T.L.
+Lr
+T.D.
+F
+Lr
+W+
+T.D.
+H
+Lr
+W+
+T.D.
+F
+H
+Lr
+W+
+T.D.
+F
+H
+Lr
+W+
+T.D.
+F
+Lr
+W-
+T.D.
+H
+Lr
+W-
+T.D.
+F
+H
+Lr
+W-
+T.D.
+F
+H
+Lr
+W-
+T.D.
+F
+W+
+T.L.
+Lr
+T.D.
+H
+W+
+T.L.
+Lr
+T.D.
+F
+H
+W+
+T.L.
+Lr
+T.D.
+F
+H
+W+
+T.L.
+Lr
+T.D.
+F
+W-
+T.L.
+Lr
+T.D.
+H
+W-
+T.L.
+Lr
+T.D.
+F
+H
+W-
+T.L.
+Lr
+T.D.
+F
+H
+W-
+T.L.
+Lr
+T.D.
+W+
+F
+T.D.
+W-
+F
+T.D.
+H
+W+
+T.D.
+H
+W-
+T.D.
+F
+H
+W+
+T.D.
+F
+H
+W-
+T.D.
+F
+H
+W+
+T.D.
+F
+H
+W-
+T.D.
+F
+SpecX
+T.L.
+T.D.
+F
+SpecY
+T.L.
+T.D.
+H
+SpecX
+T.L.
+T.D.
+H
+SpecY
+T.L.
+T.D.
+F
+H
+SpecX
+T.L.
+T.D.
+F
+H
+SpecY
+T.L.
+T.D.
+F
+H
+SpecX
+T.L.
+T.D.
+F
+H
+SpecY
+T.L.
+T.D.
+F
+Qx
+T.L.
+T.D.
+F
+Qy
+T.L.
+T.D.
+H
+Qx
+T.L.
+T.D.
+H
+Qy
+T.L.
+T.D.
+F
+H
+Qx
+T.L.
+T.D.
+F
+H
+Qy
+T.L.
+T.D.
+F
+H
+Qx
+T.L.
+T.D.
+F
+H
+Qy
+T.L.
+T.D.
+F
+SpecXY
+T.L.
+T.D.
+H
+SpecXY
+T.L.
+T.D.
+F
+H
+SpecXY
+T.L.
+T.D.
+F
+H
+SpecXY
+T.L.
+T.D.
+F
+Qxy
+T.L.
+T.D.
+H
+Qxy
+T.L.
+T.D.
+F
+H
+Qxy
+T.L.
+T.D.
+F
+H
+Qxy
+T.L.
+T.D.
+F
+SpecX
+T.L.
+T.D.
+F
+SpecY
+T.L.
+T.D.
+H
+SpecX
+T.L.
+T.D.
+H
+SpecY
+T.L.
+T.D.
+F
+H
+SpecX
+T.L.
+T.D.
+F
+H
+SpecY
+T.L.
+T.D.
+F
+H
+SpecX
+T.L.
+T.D.
+F
+H
+SpecY
+T.L.
+T.D.
+F
+Qx
+T.L.
+T.D.
+F
+Qy
+T.L.
+T.D.
+H
+Qx
+T.L.
+T.D.
+H
+Qy
+T.L.
+T.D.
+F
+H
+Qx
+T.L.
+T.D.
+F
+H
+Qy
+T.L.
+T.D.
+F
+H
+Qx
+T.L.
+T.D.
+F
+H
+Qy
+T.L.
+T.D.
+F
+SpecXY
+T.L.
+T.D.
+H
+SpecXY
+T.L.
+T.D.
+F
+H
+SpecXY
+T.L.
+T.D.
+F
+H
+SpecXY
+T.L.
+T.D.
+F
+Qxy
+T.L.
+T.D.
+H
+Qxy
+T.L.
+T.D.
+F
+H
+Qxy
+T.L.
+T.D.
+F
+H
+Qxy
+T.L.
+T.D.
+SpecX
+F
+T.D.
+SpecY
+F
+T.D.
+H
+SpecX
+T.D.
+H
+SpecY
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+Qx
+F
+T.D.
+Qy
+F
+T.D.
+H
+Qx
+T.D.
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+SpecXY
+F
+T.D.
+SpecXY
+H
+T.D.
+SpecXY
+H
+F
+T.D.
+SpecXY
+H
+F
+T.D.
+Qxy
+F
+T.D.
+Qxy
+H
+T.D.
+Qxy
+H
+F
+T.D.
+Qxy
+H
+F
+T.D.
+SpecX
+F
+T.D.
+SpecY
+F
+T.D.
+H
+SpecX
+T.D.
+H
+SpecY
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+F
+H
+SpecX
+T.D.
+F
+H
+SpecY
+T.D.
+Qx
+F
+T.D.
+Qy
+F
+T.D.
+H
+Qx
+T.D.
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+F
+H
+Qx
+T.D.
+F
+H
+Qy
+T.D.
+SpecXY
+F
+T.D.
+SpecXY
+H
+T.D.
+SpecXY
+H
+F
+T.D.
+SpecXY
+H
+F
+T.D.
+Qxy
+F
+T.D.
+Qxy
+H
+T.D.
+Qxy
+H
+F
+T.D.
+Qxy
+H
+F
+T.D.
+F
+T+
+T.L.
+T.D.
+H
+T+
+T.L.
+T.D.
+F
+H
+T+
+T.L.
+T.D.
+F
+H
+T+
+T.L.
+T.D.
+F
+T-
+T.L.
+T.D.
+H
+T-
+T.L.
+T.D.
+F
+H
+T-
+T.L.
+T.D.
+F
+H
+T-
+T.L.
+T.D.
+F
+T+
+T.L.
+T.D.
+H
+T+
+T.L.
+T.D.
+F
+H
+T+
+T.L.
+T.D.
+F
+H
+T+
+T.L.
+T.D.
+F
+T-
+T.L.
+T.D.
+H
+T-
+T.L.
+T.D.
+F
+H
+T-
+T.L.
+T.D.
+F
+H
+T-
+T.L.

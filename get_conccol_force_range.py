@@ -10,6 +10,20 @@ csiutils.set_units(SapModel) # set to kNmc
 design_concrete = ops.DesignConcrete(SapModel)
 frame_obj = etabs.cFrameObj(SapModel.FrameObj)
 
+input("Selection will be based on the combinations selected in the table of etabs model, press enter to continue")
+# for some reason following will not work
+# deselect all combo
+# ret = SapModel.Results.Setup.DeselectAllCasesAndCombosForOutput()
+# combo_list = utils.read_txt\
+#         (r'C:\Users\Shahabaz.muhammed\OneDrive - Surbana Jurong Private Limited\.python\etabs\support_files\combos.txt')
+# [SapModel.Results.Setup.SetComboSelectedForOutput(i,True) for i in combo_list]
+# for i in combo_list:
+#     check_combo = ops.set_combo(SapModel,i)
+#     if check_combo:
+#         pass
+#     else:
+#         print(f"Combination {i} not selected")
+
 p_design_list = []
 frame_list = csiutils.frame_all(SapModel)
 for i in frame_list:

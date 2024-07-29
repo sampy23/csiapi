@@ -135,3 +135,4 @@ def get_colrebar(SapModel,frame_name):
 def get_propmodifiers(SapModel,frame_name):
     [ret, modifiers] = SapModel.PropFrame.GetModifiers(frame_name,[float()])
     return modifiers
+
