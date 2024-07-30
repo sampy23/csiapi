@@ -10,10 +10,7 @@ def set_pointselection(SapModel,uniq_lab):
     point_obj = etabs.cPointObj(SapModel.PointObj)
     if isinstance(uniq_lab,str):
         ret = point_obj.SetSelected(uniq_lab,True)
-        if ret == "0":
-            return True
-        else:
-            return False
+        return not ret
     elif isinstance(uniq_lab,Iterable):
         ret = [point_obj.SetSelected(i, True) for i in uniq_lab]
         if sum(ret) == 0:
@@ -25,10 +22,7 @@ def set_frameselection(SapModel,uniq_lab):
     frame_obj = etabs.cFrameObj(SapModel.FrameObj)
     if isinstance(uniq_lab,str):
         ret = frame_obj.SetSelected(uniq_lab,True)
-        if ret == 0:
-            return True
-        else:
-            return False
+        return not ret
     elif isinstance(uniq_lab,Iterable):
         ret = [frame_obj.SetSelected(i, True) for i in uniq_lab]
         if sum(ret) == 0:
