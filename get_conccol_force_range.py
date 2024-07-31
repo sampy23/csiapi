@@ -51,7 +51,7 @@ upper_bound = utils.input_float("Enter the upper bound of the P value for member
 select_list = []
 csiutils.clear_selection(SapModel)
 for i,j in zip(frame_list,p_design_list):
-    if (j < upper_bound) and (j >= lower_bound):
+    if (j <= upper_bound) and (j >= lower_bound):
         select_list.append(i)
         ops.set_frameselection(SapModel,i)
 
