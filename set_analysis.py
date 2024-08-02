@@ -1,20 +1,26 @@
-import ctypes
+import tkinter as tk
 from tkinter import messagebox
 
 from csiapi import csiutils
 
 def Mbox(title, message):
-    WS_EX_TOPMOST = 0x40000
+    # Create a root window
+    root = tk.Tk()
+    root.withdraw()  # Hide the root window
 
-    # display a message box; execution will stop here until user acknowledges
-    ctypes.windll.user32.MessageBoxExW(None, message, title, WS_EX_TOPMOST)
-
-    print("User clicked OK.")
+    # Ensure the dialog stays on top
+    root.attributes("-topmost", True)
+    
+    # Show a messagebox with a warning message
+    messagebox.showwarning(title, message)
+    
+    # Destroy the root window after the messagebox is closed
+    root.destroy()
 
 SapModel = csiutils.attach()
 ret = csiutils.run(SapModel)
 
 if not ret:
-    Mbox("ETABS Run Message Box", "Analysis Complete!!")
+    Mbox("ETABS Run Status", "Analysis Complete!!")
 else:
-    Mbox("ETABS Run Message Box", "Analysis Incomplete!!")
+    Mbox("ETABS Run Status", "Analysis Incomplete!!")
