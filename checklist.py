@@ -1,9 +1,8 @@
 from collections import Counter
 import pandas as pd
-from tabulate import tabulate
 from collections.abc import Iterable
 
-from csiapi import csiutils,ops
+from csiapi import csiutils,ops, utils
 
 SapModel = csiutils.attach()
 csiutils.set_units(SapModel) # set to kNmc
@@ -76,17 +75,8 @@ def framemodifier():
                         "Shear_22_mod","Shear_33_mod","torsion_mod","MI_22_mod","MI_33_mod","mass_mod","weight_mod"])
     return modifier_df
 
-
-def pretty_print(dfs):
-    if isinstance(dfs,tuple):
-        print("hai")
-        [print(tabulate(i, headers='keys', tablefmt='grid')) for i in dfs] 
-    else:
-        print(tabulate(dfs, headers='keys', tablefmt='grid'))
-
-
-pretty_print(material_data())
+utils.pretty_print(material_data())
 input("press enter to continue to next")
-pretty_print(frame_data())
+utils.pretty_print(frame_data())
 input("press enter to continue to next")
-pretty_print(framemodifier())
+utils.pretty_print(framemodifier())

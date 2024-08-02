@@ -14,6 +14,6 @@ if list_frames.any():
         selec_obj.append(sec_name)
     
     summary = utils.organise(selec_obj)
-    print(summary)
+    utils.pretty_print(summary)
 else:
     print("No members selected")

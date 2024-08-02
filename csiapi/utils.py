@@ -1,4 +1,5 @@
 import pandas as pd
+from tabulate import tabulate
 
 def sys_to_df(list_systemobjs,columns):
     df = pd.DataFrame([list(i) for i in list_systemobjs]).transpose()
@@ -47,3 +48,9 @@ def read_txt(file_name):
     contents_list = contents.split("\n")
     unique_contents_list = set(contents_list) # remove duplicates in case duplicates are present
     return unique_contents_list
+#=======================================================================================================================
+def pretty_print(df):
+    if isinstance(df,tuple):
+        [print(tabulate(i, headers='keys', tablefmt='grid')) for i in df] 
+    else:
+        print(tabulate(df, headers='keys', tablefmt='grid'))
