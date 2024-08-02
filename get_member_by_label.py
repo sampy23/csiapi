@@ -22,6 +22,7 @@ elif user_input == 2:
         contents = f.read()
     contents_list = contents.split("\n")
     unique_contents_list = set(contents_list) # remove duplicates in case duplicates are present
-    
+    # Remove empty strings using set comprehension
+    unique_contents_list = {item for item in unique_contents_list if item}
     select(unique_contents_list)
 
