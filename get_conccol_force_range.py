@@ -3,13 +3,6 @@ import pandas as pd
 from csiapi import csiutils,ops,utils
 import ETABSv1 as etabs
 
-SapModel = csiutils.attach()
-csiutils.run(SapModel)
-csiutils.set_units(SapModel) # set to kNmc
-
-design_concrete = ops.DesignConcrete(SapModel)
-frame_obj = etabs.cFrameObj(SapModel.FrameObj)
-
 input("Selection will be based on the combinations selected in the table of etabs model, press enter to continue")
 # for some reason following will not work
 # deselect all combo
@@ -23,6 +16,13 @@ input("Selection will be based on the combinations selected in the table of etab
 #         pass
 #     else:
 #         print(f"Combination {i} not selected")
+
+SapModel = csiutils.attach()
+csiutils.run(SapModel)
+csiutils.set_units(SapModel) # set to kNmc
+
+design_concrete = ops.DesignConcrete(SapModel)
+frame_obj = etabs.cFrameObj(SapModel.FrameObj)
 
 p_design_list = []
 frame_list = csiutils.frame_all(SapModel)
