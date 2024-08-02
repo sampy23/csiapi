@@ -15,7 +15,9 @@ if list_frames.any():
             column_list.append(sec_name)
     
     summary = utils.organise(column_list)
-    print(summary)
+    # Assign a name to the index
+    summary.rename_axis('Frame_name', inplace=True)
+    utils.pretty_print(summary)
     csiutils.clear_selection(SapModel)
 else:
     print("No members selected")

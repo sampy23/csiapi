@@ -14,6 +14,7 @@ if list_frames.any():
         selec_obj.append(sec_name)
     
     summary = utils.organise(selec_obj)
+    summary.rename_axis('Frame_name', inplace=True)
     utils.pretty_print(summary)
 else:
     print("No members selected")
