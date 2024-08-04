@@ -4,10 +4,9 @@ from collections.abc import Iterable
 
 from csiapi import csiutils,ops, utils
 
-SapModel = csiutils.attach()
-csiutils.set_units(SapModel) # set to kNmc
+# SapModel = csiutils.attach()
 
-def material_data():
+def material_data(SapModel):
     mat_name = list(csiutils.get_names(SapModel))
     mat_density = [round(csiutils.get_density(SapModel, k),2) for k in mat_name]
 
@@ -28,7 +27,7 @@ def material_data():
                                     "poisson's ratio","coeff thrml exp\n (1.0e-05/C)"])
     return mat_df
 
-def frame_data():
+def frame_data(SapModel):
     prop_df = csiutils.get_frameprop(SapModel)
     prop_df.iloc[:,2:] = prop_df.iloc[:,2:].round(5)*1000 #data in mm
 
@@ -62,7 +61,7 @@ def frame_data():
     return prop_df,beamrebar_df,columnrebar_df
 
 
-def framemodifier():
+def framemodifier(SapModel):
     df_list = []
     prop_df = csiutils.get_frameprop(SapModel)
     for i in prop_df.Frame_Name:
@@ -75,8 +74,11 @@ def framemodifier():
                         "Shear_22_mod","Shear_33_mod","torsion_mod","MI_22_mod","MI_33_mod","mass_mod","weight_mod"])
     return modifier_df
 
-utils.pretty_print(material_data())
-input("press enter to continue to next")
-utils.pretty_print(frame_data())
-input("press enter to continue to next")
-utils.pretty_print(framemodifier())
+def main(SapModel):
+    csiutils.set_units(SapModel) # set to kNmc
+
+    utils.pretty_print(material_data(SapModel))
+    input("press enter to continue to next")
+    utils.pretty_print(frame_data(SapModel))
+    input("press enter to continue to next")
+    utils.pretty_print(framemodifier(SapModel))

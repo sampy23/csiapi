@@ -17,10 +17,14 @@ def Mbox(title, message):
     # Destroy the root window after the messagebox is closed
     root.destroy()
 
-SapModel = csiutils.attach()
-ret = csiutils.run(SapModel)
+def main(SapModel):
+    ret = csiutils.run(SapModel)
 
-if not ret:
-    Mbox("ETABS Run Status", "Analysis Complete!!")
-else:
-    Mbox("ETABS Run Status", "Analysis Incomplete!!")
+    if not ret:
+        Mbox("ETABS Run Status", "Analysis Complete!!")
+    else:
+        Mbox("ETABS Run Status", "Analysis Incomplete!!")
+
+if __name__ == "__main__":
+    SapModel = csiutils.attach()
+    main(SapModel)
