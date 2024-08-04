@@ -13,7 +13,7 @@ def main(SapModel):
 
     if user_input == 1:
         unique_label = input("Enter member unique label: ")
-        select(SapModel, unique_contents_list)
+        select(SapModel, unique_label)
 
     elif user_input == 2:
         print("Notepad values will be used for member selection")
