@@ -34,11 +34,11 @@ while True:
             if hasattr(script, 'main'):
                 script.main(SapModel)
                 input("Press enter to continue: ")
-                print("==========================================")
+                print("==========================================================")
             elif hasattr(script, 'local'):
                 script.local()
                 input("Press enter to continue: ")
-                print("==========================================")
+                print("==========================================================")
             else:
                 print(f"The selected script does not have a 'main' function.")
     except ValueError:
