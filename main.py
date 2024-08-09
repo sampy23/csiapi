@@ -1,7 +1,32 @@
 import sys
+import time
+import msvcrt
 import os
 import importlib
 from csiapi import csiutils
+
+def spinner():
+    spinner = ['/', '-', '\\', '|']
+    i = 0
+
+    # print("Press Enter to stop the spinner.")
+
+    while True:
+        # Display the spinner
+        sys.stdout.write(spinner[i % len(spinner)])
+        sys.stdout.flush()
+        time.sleep(0.1)
+        sys.stdout.write('\b')  # Erase the last character
+
+        # Check if a key is pressed
+        if msvcrt.kbhit():
+            key = msvcrt.getch()  # Get the key press
+            if key == b'\r':  # Enter key is detected
+                break
+
+        i += 1
+
+    # print("Loop exited.")
 
 SapModel = csiutils.attach()
 
@@ -33,11 +58,11 @@ while True:
             script = scripts[selection]
             if hasattr(script, 'main'):
                 script.main(SapModel)
-                input("Press enter to continue: ")
+                spinner()
                 print("==========================================================")
             elif hasattr(script, 'local'):
                 script.local()
-                input("Press enter to continue: ")
+                spinner()
                 print("==========================================================")
             else:
                 print(f"The selected script does not have a 'main' function.")
