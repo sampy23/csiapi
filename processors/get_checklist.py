@@ -46,7 +46,7 @@ def frame_data(SapModel):
     beamrebar_df = pd.DataFrame(beam_df,columns = ["Frame_Name","MatPropLong",\
                         "MatPropConfine","CoverTop","CoverBot","TopLeftArea","TopRightArea","BotLeftArea","BotRightArea"])
     columnrebar_df = pd.DataFrame(column_df,columns = ["Frame_Name","MatPropLong", "MatPropConfine", "Pattern", "ConfineType", "Cover", \
-                        "NumberCBars", "NumberR3Bars", "NumberR2Bars", "RebarSize","TieSize", "TieSpacingLongit", "Number2DirTieBars",\
+                         "NumberR3Bars", "NumberR2Bars", "NumberCBars","RebarSize","TieSize", "TieSpacingLongit", "Number2DirTieBars",\
                          "Number3DirTieBars", "ToBeDesigned"])
 
     
