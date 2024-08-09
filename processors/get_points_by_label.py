@@ -1,12 +1,10 @@
 from csiapi import csiutils,ops,utils
 
 def select(SapModel,item):
-    csiutils.clear_selection(SapModel)
     if ops.set_pointselection(SapModel,item):
-        print("Points selected!!")
+        print(f"Points {item} selected!!")
     else:
-        print("Points not selected!!")
-    csiutils.refresh(SapModel)
+        print("Warning!!!!Points not selected!!")
 
 # SapModel = csiutils.attach()
 
@@ -15,7 +13,9 @@ def main(SapModel):
 
     if user_input == 1:
         unique_label = input("Enter point unique label: ")
+        csiutils.clear_selection(SapModel)
         select(SapModel, unique_label)
+        csiutils.refresh(SapModel)
 
     elif user_input == 2:
         print("Notepad values will be used for member selection\n")
@@ -25,6 +25,7 @@ def main(SapModel):
         unique_contents_list = set(contents_list) # remove duplicates in case duplicates are present
         # Remove empty strings using set comprehension
         unique_contents_list = {item for item in unique_contents_list if item}
-        select(SapModel, unique_contents_list)
-    
-
+        csiutils.clear_selection(SapModel)
+        select(SapModel,unique_contents_list)
+        # [select(SapModel, i) for i in unique_contents_list]
+        csiutils.refresh(SapModel)
