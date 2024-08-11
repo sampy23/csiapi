@@ -26,7 +26,8 @@ def main(SapModel):
 
 
     rect_prop_column_df = prop_df[prop_df['PropType'] == ops.etabs.eFramePropType.Rectangular]
-    rect_column_rebar_df = columnrebar_df[(columnrebar_df.Pattern == 1) & (columnrebar_df.ToBeDesigned == False)] # pattern 1 is for rectangular
+    rect_column_rebar_df = columnrebar_df[(columnrebar_df.Pattern == 1) & (columnrebar_df.ToBeDesigned == False)] \
+                                                # pattern 1 is for rectangular and to be designed false catches column
 
     rect_column_df = rect_column_rebar_df.copy() # create a copy to avoid warning
     rect_column_df["width"] = rect_prop_column_df.width # adding width from property
