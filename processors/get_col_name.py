@@ -5,6 +5,8 @@ import math
 # SapModel = csiutils.attach()
 
 def main(SapModel):
+    csiutils.set_units(SapModel)
+
     # defining the property frame which has depth and width
     prop_df = csiutils.get_frameprop(SapModel)
     prop_df.iloc[:,2:] = prop_df.iloc[:,2:].round(5)*1000 #data in mm
