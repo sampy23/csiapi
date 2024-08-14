@@ -14,6 +14,8 @@ def main (SapModel):
         summary = utils.organise(column_list)
         # Assign a name to the index
         summary.rename_axis('Frame_name', inplace=True)
+        summary = summary.reset_index()
+        summary.rename_axis('Item_#', inplace=True)
         utils.pretty_print(summary)
         csiutils.clear_selection(SapModel)
     else:
