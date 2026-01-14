@@ -9,7 +9,11 @@ from .  import utils
 def attach():
     # Initialize ETABS object
     helper = etabs.cHelper(etabs.Helper())
-    etabs_object = etabs.cOAPI(helper.GetObject("CSI.ETABS.API.ETABSObject"))
+    try:
+        etabs_object = etabs.cOAPI(helper.GetObject("CSI.ETABS.API.ETABSObject"))
+    except: # for version 22
+        etabs_object = etabs.cOAPI(helper.CreateObjectProgID("CSI.ETABS.API.ETABSObject"))
+
     SapModel = etabs_object.SapModel
     file_path = SapModel.GetModelFilename()
     file_name_ext = os.path.basename(file_path)
