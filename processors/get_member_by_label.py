@@ -17,7 +17,7 @@ def main(SapModel):
 
     elif user_input == 2:
         print("Notepad values will be used for member selection")
-        with open(r'C:\Users\Shahabaz.muhammed\OneDrive - Surbana Jurong Private Limited\.python\etabs\support_files\points list.txt') as f:
+        with open(r'C:\Users\Shahabaz.muhammed\OneDrive - Surbana Jurong Private Limited\.python\etabs\support_files\member list.txt') as f:
             contents = f.read()
         contents_list = contents.split("\n")
         unique_contents_list = set(contents_list) # remove duplicates in case duplicates are present
