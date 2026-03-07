@@ -1,3 +1,7 @@
+NAME = "Checklist"
+DESCRIPTION = "Provide a series of table to do check for frame definitions"
+REQUIRES_MODEL = True
+
 from collections import Counter
 import pandas as pd
 from collections.abc import Iterable

@@ -1,3 +1,7 @@
+NAME = "Frame Count"
+DESCRIPTION = "Creates a list detailing the frame name and how many are currently selected"
+REQUIRES_MODEL = True
+
 from collections import Counter
 import pandas as pd
 

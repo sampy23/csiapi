@@ -1,3 +1,7 @@
+NAME = "Filters elements"
+DESCRIPTION = "Selection of elements can be filtered into beams, columns,walls, floor"
+REQUIRES_MODEL = True
+
 from collections import Counter
 import sys
 

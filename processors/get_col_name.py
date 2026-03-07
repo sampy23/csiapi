@@ -1,3 +1,7 @@
+NAME = "Column Name"
+DESCRIPTION = "Creates column name based on the internal parameter"
+REQUIRES_MODEL = True
+
 from csiapi import csiutils,utils,ops
 import pandas as pd
 import math

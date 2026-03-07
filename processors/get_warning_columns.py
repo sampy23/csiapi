@@ -1,3 +1,7 @@
+NAME = "Selects Columns with warnings"
+DESCRIPTION = "This selection includes columns with both delta_ns and joint shear failure"
+REQUIRES_MODEL = True
+
 import pandas as pd
 from tabulate import tabulate
 

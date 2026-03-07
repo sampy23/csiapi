@@ -1,3 +1,7 @@
+NAME = "Selects points by Unique name"
+DESCRIPTION = "Selection of points can be done by single input or from list in notepad"
+REQUIRES_MODEL = True
+
 from csiapi import csiutils,ops,utils
 
 def select(SapModel,item):

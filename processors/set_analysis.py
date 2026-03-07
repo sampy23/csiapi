@@ -1,3 +1,7 @@
+NAME = "Analyse the model"
+DESCRIPTION = "This will analyse the model and provide feedback on the analysis status"
+REQUIRES_MODEL = True
+
 import tkinter as tk
 from tkinter import messagebox
 

@@ -1,3 +1,7 @@
+NAME = "Column Straigtness"
+DESCRIPTION = "Checks the model for inclined columns / braces"
+REQUIRES_MODEL = True
+
 from csiapi import csiutils,ops
 
 # SapModel = csiutils.attach()

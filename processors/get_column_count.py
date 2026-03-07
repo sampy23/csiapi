@@ -1,3 +1,7 @@
+NAME = "Column Count and Type Selected"
+DESCRIPTION = "Creates a list detailing the column name and how many are currently selected"
+REQUIRES_MODEL = True
+
 from csiapi import csiutils, utils
 
 def main (SapModel):

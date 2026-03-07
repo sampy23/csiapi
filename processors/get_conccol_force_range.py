@@ -1,3 +1,7 @@
+NAME = "Select Column by Axial force"
+DESCRIPTION = "Programs runs and designs the model and then allow user to select columns in particular range. Might take long time!!!"
+REQUIRES_MODEL = True
+
 import pandas as pd
 
 from csiapi import csiutils,ops,utils
@@ -57,6 +61,7 @@ def local():
             ops.set_frameselection(SapModel,i)
 
     if select_list:
+        print(select_list)
         print("\nSuccesfully selected members in model")
     else:
         print("\nNo members selected as no members could be found in this range")
