@@ -47,8 +47,15 @@ while True:
     try:
         # Dynamically generate the user input prompt string
         input_string = "Enter the following number for the desired action:\n    0  -  Exit\n"
-        for i, name in enumerate(modules.keys(), start=1):
-            input_string += f"    {i}  -  {name}\n"
+        for i, (name, module) in enumerate(modules.items(), start=1):
+
+            display_name = getattr(module, "NAME", name)
+            description = getattr(module, "DESCRIPTION", "")
+
+            input_string += f"    {i}  -  {display_name}\n"
+
+            if description:
+                input_string += f"           {description}\n"
         
         selection = int(input(input_string))
         if selection == 0:

@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from collections.abc import Iterable
 
 # import pythonnet clr-loader
@@ -104,7 +105,7 @@ class DesignConcrete:
         else:
             return None
     
-    def col_concdesign_forces(self,col_frame):
+    def col_concdesign_forces(self,col_frame): # extracts design force for a particular column element
         """This works for both steel and concrete"""
 
         [ret, NumberResults, FrameName, ComboName, Station,P, V2, V3, T, M2, M3] = \
@@ -115,6 +116,54 @@ class DesignConcrete:
         col_design_forces_df = pd.DataFrame(list(zip(FrameName, ComboName, Station,P, V2, V3, T, M2, M3)),
                             columns = ["FrameName", "ComboName", "Station","P", "V2", "V3", "T", "M2", "M3"])
         return col_design_forces_df
+    
+
+
+
+    def all_column_design_forces(self): #this will pull all the data from db, quite faster than reading line by line
+
+        result = self.sapmodel.DatabaseTables.GetTableForDisplayArray(
+            "Design Forces - Columns",
+            [str()],
+            str(),
+            int(),
+            [str()],
+            int(),
+            [str()]
+        )
+
+        ret = result[0]
+
+        if ret != 0:
+            raise RuntimeError("Could not retrieve column design forces table")
+
+        # table_version = result[1]
+        field_keys = list(result[1])
+        # group_name = result[3]
+        # num_records = result[4]
+        table_data = list(result[5])
+
+        if len(field_keys)>1:
+            n_fields = len(field_keys)
+        else:
+            print("No field key identified, user defined headers will be used")
+            field_keys = ["Story","Column","Unique_Name","Combo","Station","P","V2","V3","T","M2","M3"]
+            n_fields = len(field_keys)
+
+        # reshape 1D list to 2D
+        data_array = np.array(table_data).reshape(-1, n_fields)
+
+        df = pd.DataFrame(data_array, columns=field_keys)
+        if "Frame" in df.columns:
+            df.rename(columns={"Frame": "Unique_Name"}, inplace=True)
+
+        numeric_cols = ["P", "V2", "V3", "T", "M2", "M3"]
+
+        for col in numeric_cols:
+            if col in df.columns:
+                df[col] = pd.to_numeric(df[col])
+
+        return df
 
     @staticmethod
     def member_type(uniq_lab,frame_obj):

@@ -1,5 +1,5 @@
 NAME = "Select Column by Axial force"
-DESCRIPTION = "Programs runs and designs the model and then allow user to select columns in particular range. Might take long time!!!"
+DESCRIPTION = "Programs runs and designs the model and then allow user to select columns in particular range."
 REQUIRES_MODEL = True
 
 import pandas as pd
@@ -8,7 +8,7 @@ from csiapi import csiutils,ops,utils
 import ETABSv1 as etabs
 
 def local():
-    input("Selection will be based on the combinations selected in the table of etabs model, press enter to continue")
+    input("Selection will be based on the combinations selected in the table of etabs model, press enter to continue: ")
     # for some reason following will not work
     # deselect all combo
     # ret = SapModel.Results.Setup.DeselectAllCasesAndCombosForOutput()
@@ -27,44 +27,54 @@ def local():
     csiutils.set_units(SapModel) # set to kNmc
 
     design_concrete = ops.DesignConcrete(SapModel)
-    frame_obj = etabs.cFrameObj(SapModel.FrameObj)
 
-    p_design_list = []
-    frame_list = csiutils.frame_all(SapModel)
-    for i in frame_list:
-        mem_type = csiutils.member_type(SapModel,i)
-        if mem_type == "Column":
-            conccolumn_design_df = design_concrete.col_concdesign_forces(i)
-            p_design_list.append(round(conccolumn_design_df.P.abs().max(),1))
+    df = design_concrete.all_column_design_forces()
+    df["P"] = pd.to_numeric(df["P"], errors="coerce") # to force dataframe which are not numeric to number
 
-    inx_max = p_design_list.index(max(p_design_list))
-    inx_min = p_design_list.index(min(p_design_list))
+  # Maximum absolute axial load per column
+    pmax = df.groupby("Unique_Name")["P"].max()
+    pmin = df.groupby("Unique_Name")["P"].min() #critical as this is compression
 
-    p_minima = min(p_design_list)
-    p_maxima = max(p_design_list)
-    print(f"\nMaximum axial load is for {frame_list[inx_max]}, with force of {p_maxima}kN")
-    print(f"Lowest axial load is for {frame_list[inx_min]}, with force of {p_minima}kN")
+    # Global maxima/minima
+    frame_max = pmax.idxmax()
+    frame_min = pmin.idxmin()
 
-    print(f"\nMinima is {p_minima}kN, Maxima is {p_maxima}kN")
-    lower_bound = utils.input_float("\nEnter the lower bound of the P value for member selection: ",\
-                        p_minima,p_maxima, \
-                        reminder="Please enter number which are within the maxima and minima obtained.")
-    upper_bound = utils.input_float("Enter the upper bound of the P value for member selection: ",\
-                        p_minima,p_maxima, \
-                        reminder="Please enter number which are within the maxima and minima obtained.")
+    p_maxima = pmax.max()
+    p_minima = pmin.min()
 
-    select_list = []
-    csiutils.clear_selection(SapModel)
-    for i,j in zip(frame_list,p_design_list):
-        if (j <= upper_bound) and (j >= lower_bound):
-            select_list.append(i)
-            ops.set_frameselection(SapModel,i)
+    print(f"\nMaximum axial load is for {frame_max}, with force of {p_maxima:.2f}kN")
+    print(f"Lowest axial load is for {frame_min}, with force of {p_minima:.2f}kN")
 
-    if select_list:
-        print(select_list)
-        print("\nSuccesfully selected members in model")
-    else:
-        print("\nNo members selected as no members could be found in this range")
+    while True:
+        print(f"\nMinima is {p_minima}kN, Maxima is {p_maxima}kN")
+        lower_bound = utils.input_float("\nEnter the lower bound of the P value for member selection: ",\
+                            p_minima,p_maxima, \
+                            reminder="Please enter number which are within the maxima and minima obtained.")
+        upper_bound = utils.input_float("Enter the upper bound of the P value for member selection: ",\
+                            p_minima,p_maxima, \
+                            reminder="Please enter number which are within the maxima and minima obtained.")
+
+        if lower_bound > upper_bound: # Handling user mistake in upper and lower bound
+            lower_bound, upper_bound = upper_bound, lower_bound
+        
+        # --- SELECT MEMBERS ---
+        selected_max = pmax[(pmax >= lower_bound) & (pmax <= upper_bound)]
+        selected_min = pmin[(pmin >= lower_bound) & (pmin <= upper_bound)]
+        selected_cols = selected_max.index.tolist()
+        selected_cols = list(set(
+            selected_max.index.tolist() + selected_min.index.tolist()
+        ))
+
+        print(f"\nSelecting {len(selected_cols)} columns...")
+        SapModel.SelectObj.ClearSelection()
+        ops.set_frameselection(SapModel, selected_cols)
+
+        check_exit = input("\nPress Enter to continue and q to exit: ")
+        if check_exit.lower() == "q":
+            break
+        else:
+            continue
+
 
 if __name__ == "__main__":
     local()
