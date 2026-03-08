@@ -3,6 +3,7 @@ DESCRIPTION = "Programs runs and designs the model and then allow user to select
 REQUIRES_MODEL = True
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 from csiapi import csiutils,ops,utils
 import ETABSv1 as etabs
@@ -31,24 +32,37 @@ def local():
     df = design_concrete.all_column_design_forces()
     df["P"] = pd.to_numeric(df["P"], errors="coerce") # to force dataframe which are not numeric to number
 
-    idx = df.groupby("Unique_Name")["P"].idxmax()
+    # ----------------------------------
+    # FIND CONTROLLING LOAD COMBINATION FOR COMPRESSION
+    # ----------------------------------
 
-    envelope = df.loc[idx][["Unique_Name", "P", "Combo"]]
-    envelope = envelope.set_index("Unique_Name")
+    compression = df.groupby("Unique_Name")["P"].min() # targetting only compression
 
-    pmax = envelope["P"]
+    frame_max = compression.idxmax()
+    frame_min = compression.idxmin()
 
-    frame_max = pmax.idxmax()
-    frame_min = pmax.idxmin()
+    p_maxima = float(compression.max())
+    p_minima = float(compression.min())
 
-    print("\nControlling axial forces:\n")
-    print(envelope.sort_values("P", ascending=True).head(10))
+    print("\nGoverning compression forces (10 most critical):\n")
 
-    p_maxima = float(pmax.max())
-    p_minima = float(pmax.min())
+    print(
+        compression.sort_values().head(10)
+    )
 
     print(f"\nMaximum axial load: {frame_max} → {p_maxima:.2f} kN")
     print(f"Minimum axial load: {frame_min} → {p_minima:.2f} kN")
+
+    # ----------------------------------
+    # HISTOGRAM (LOAD DISTRIBUTION)
+    # ----------------------------------
+
+    plt.hist(compression.dropna(), bins=15)
+    plt.title("Column Axial Load Distribution")
+    plt.xlabel("Axial Force (kN)")
+    plt.ylabel("Number of Columns")
+    plt.show()
+
 
     while True:
         print(f"\nMinima is {p_minima:.2f}kN, Maxima is {p_maxima:.2f}kN")
@@ -63,9 +77,8 @@ def local():
             lower_bound, upper_bound = upper_bound, lower_bound
         
         # --- SELECT MEMBERS ---
-        selected_max = pmax[(pmax >= lower_bound) & (pmax <= upper_bound)]
+        selected_max = compression[(compression >= lower_bound) & (compression <= upper_bound)]
         # selected_min = pmin[(pmin >= lower_bound) & (pmin <= upper_bound)]
-        selected_cols = selected_max.index.tolist()
         selected_cols = list(set(
             selected_max.index.tolist()
         ))
