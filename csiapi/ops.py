@@ -114,11 +114,8 @@ class DesignConcrete:
                                     etabs.eItemType.Objects)
     
         col_design_forces_df = pd.DataFrame(list(zip(FrameName, ComboName, Station,P, V2, V3, T, M2, M3)),
-                            columns = ["FrameName", "ComboName", "Station","P", "V2", "V3", "T", "M2", "M3"])
-        return col_design_forces_df
-    
-
-
+                            columns = ["Unique_Name", "Combo", "Station","P", "V2", "V3", "T", "M2", "M3"])
+        return col_design_forces_df  
 
     def all_column_design_forces(self): #this will pull all the data from db, quite faster than reading line by line
 
