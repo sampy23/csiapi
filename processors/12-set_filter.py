@@ -1,69 +1,51 @@
 NAME = "Filters elements"
-DESCRIPTION = "Selection of elements can be filtered into beams, columns,walls, floor"
+DESCRIPTION = "Selection of elements can be filtered into beams, columns, walls, floor"
 REQUIRES_MODEL = True
+PARAMS = {
+    "obj_type": {"prompt": "Object type (Frame/Area): ", "type": str},
+    "subtype":  {"prompt": "Subtype — Frame: Column/Beam/Brace  |  Area: Floor/Wall : ", "type": str}
+}
 
-from collections import Counter
-import sys
+from csiapi import csiutils, ops
 
-from csiapi import csiutils,ops
+def main(SapModel, obj_type: str, subtype: str) -> list:
+    obj_type = obj_type.strip().capitalize()
+    subtype  = subtype.strip().capitalize()
 
-def main(SapModel):
     df_select = csiutils.get_selection(SapModel)
-    csiutils.clear_selection(SapModel)  #clear previous selection if any
+    csiutils.clear_selection(SapModel)
 
-    if df_select.object_typename.any():
-        obj_type_num = int(input("Enter corresponding digit for one of the following: 1-Frame, 2-Area : "))
-        obj_type = ["Frame", "Area"][obj_type_num-1]
-        list_items = df_select[df_select.object_typename == obj_type].unique_label
-        floor_obj, wall_obj, col_obj, beam_obj, brace_obj  = ([] for i in range(5)) #assigning empty list
+    list_items = df_select[df_select.object_typename == obj_type].unique_label
+    selected = []
 
-        if obj_type == "Area":
-            area_type_num = int(input('Enter corresponding digit for one of the following: 1-Floor, 2-Wall :'))
-            area_type = ["Floor", "Wall"][area_type_num-1]
+    if obj_type == "Area":
+        buckets = {"Floor": [], "Wall": []}
+        for i in list_items:
+            at = csiutils.area_type(SapModel, i)
+            if at in ("Floor", "Null"):
+                buckets["Floor"].append(i)
+            elif at == "Wall":
+                buckets["Wall"].append(i)
+        for i in buckets.get(subtype, []):
+            ops.set_areaselection(SapModel, i)
+            selected.append(i)
 
-            for i in list_items: #seperating elements into the basic form
-                if csiutils.area_type(SapModel,i) in ["Floor", "Null"]:
-                    floor_obj.append(i)
-                elif csiutils.area_type(SapModel,i) == "Wall":
-                    wall_obj.append(i)
-                
-            if area_type == "Wall":
-                for i in wall_obj:
-                    ops.set_areaselection(SapModel,i)
-            elif area_type == "Floor":
-                for i in floor_obj:
-                    ops.set_areaselection(SapModel,i)
-        
-        elif obj_type == "Frame":
-            frame_type_num = int(input('Enter corresponding digit for one of the following: 1-Column, 2-Beam, 3-Brace :'))
-            frame_type = ["Column","Beam","Brace"][frame_type_num - 1] # selecting by index
-            for i in list_items: #seperating elements into the basic form
-                if csiutils.member_type(SapModel,i) == "Column":
-                    col_obj.append(i)
-                elif csiutils.member_type(SapModel,i) == "Beam":
-                    beam_obj.append(i)
-                elif csiutils.member_type(SapModel,i) == "Brace":
-                    brace_obj.append(i)
-
-            if frame_type == "Column":
-                for i in col_obj:
-                    ops.set_frameselection(SapModel,i)
-            elif frame_type == "Beam":
-                for i in beam_obj:
-                    ops.set_frameselection(SapModel,i)
-            elif frame_type == "Brace":
-                for i in brace_obj:
-                    ops.set_frameselection(SapModel,i)
-    else:
-        print("No Elements selected")
+    elif obj_type == "Frame":
+        buckets = {"Column": [], "Beam": [], "Brace": []}
+        for i in list_items:
+            mt = csiutils.member_type(SapModel, i)
+            if mt in buckets:
+                buckets[mt].append(i)
+        for i in buckets.get(subtype, []):
+            ops.set_frameselection(SapModel, i)
+            selected.append(i)
 
     csiutils.refresh(SapModel)
-    df_select = csiutils.get_selection(SapModel)
-    if df_select.object_typename.any():
-        print("Succesfully selected")
-    else:
-        print("No elements found of specified type")
+    return selected
 
 if __name__ == "__main__":
     SapModel = csiutils.attach()
-    main(SapModel)
+    ot = input("Object type (Frame/Area): ")
+    st = input("Subtype: ")
+    result = main(SapModel, ot, st)
+    print(f"Selected {len(result)} elements")

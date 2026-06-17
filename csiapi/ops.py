@@ -35,7 +35,7 @@ def set_areaselection(SapModel,uniq_lab):
     area_obj = etabs.cAreaObj(SapModel.AreaObj)
     if isinstance(uniq_lab,str):
         ret = area_obj.SetSelected(uniq_lab,True)
-        if ret == "0":
+        if ret == 0:
             return True
         else:
             return False
@@ -45,6 +45,7 @@ def set_areaselection(SapModel,uniq_lab):
             return True
         else:
             return False
+
 #=======================================================================================================================
 class DesignConcrete:
     def __init__(self,SapModel): # Constructor - designs concrete
@@ -95,11 +96,11 @@ class DesignConcrete:
                                                     VmajorAreaProvided, TLCombo, TLArea, TTCombo, TTArea, ErrorSummary, \
                                                     WarningSummary)),
                                     columns = ["FrameName", "Location", "TopCombo", "TopArea", "TopAreaReq",
-                                               "TopAreaMin", "TopAreaProvided", "BotCombo", "BotArea", "BotAreaReq", 
-                                                "BotAreaMin", "BotAreaProvided", "VmajorCombo", "VmajorArea", "VmajorAreaReq", 
-                                                "VmajorAreaMin", "VmajorAreaProvided", "TLCombo", "TLArea", "TTCombo", 
+                                               "TopAreaMin", "TopAreaProvided", "BotCombo", "BotArea", "BotAreaReq",
+                                                "BotAreaMin", "BotAreaProvided", "VmajorCombo", "VmajorArea", "VmajorAreaReq",
+                                                "VmajorAreaMin", "VmajorAreaProvided", "TLCombo", "TLArea", "TTCombo",
                                                 "TTArea", "ErrorSummary", "WarningSummary"])
-                return True
+                return self.design_beam_df
             except IndexError:
                 print("{0} is not a concrete beam".format(uniq_lab))
         else:
@@ -208,7 +209,7 @@ class DesignSteel:
                                             columns = ["FrameName", "FrameType", "DesignSect", "Status", "PMMCombo",
                                                     "PMMRatio", "PRatio", "MMajRatio", "MMinRatio", "VMajCombo", "VMajRatio",
                                                     "VMinCombo", "VMinRatio"])
-                return True
+                return design_steel_df
             except IndexError:
                 print("{0} is not a steel member".format(uniq_lab))
                 return None
@@ -226,7 +227,7 @@ class DesignSteel:
                                             columns = ['FrameType', 'DesignSect', 'Status', 'PMMCombo', \
                                                        'PMMRatio', 'PRatio', 'MMajRatio', 'MMinRatio', 'VMajCombo', \
                                                         'VMajRatio', 'VMinCombo', 'VMinRatio'])
-                return True
+                return design_steel_df
             except IndexError:
                 print("{0} is not a steel member".format(uniq_lab))
                 return None 

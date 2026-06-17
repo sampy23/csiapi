@@ -19,9 +19,8 @@ def main(SapModel):
         
         summary = utils.organise(selec_obj)
         summary.rename_axis('Frame_name', inplace=True)
-        utils.pretty_print(summary)
-    else:
-        print("No members selected")
+        return summary
+    return None
 
 if __name__ == "__main__":
     SapModel = csiutils.attach()

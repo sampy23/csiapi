@@ -20,10 +20,9 @@ def main (SapModel):
         summary.rename_axis('Frame_name', inplace=True)
         summary = summary.reset_index()
         summary.rename_axis('Item_#', inplace=True)
-        utils.pretty_print(summary)
         csiutils.clear_selection(SapModel)
-    else:
-        print("No members selected")
+        return summary
+    return None
 
 if __name__ == "__main__":
     SapModel = csiutils.attach()

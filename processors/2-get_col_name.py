@@ -73,7 +73,7 @@ def main(SapModel):
     frame_df = pd.concat([rect_column_df,circ_column_df],axis = 0)
 
     print("Warning!!!The program doesnot diffrentiate corner and edge rebars")
-    utils.pretty_print(frame_df)
+    return frame_df
 
 
 

@@ -21,12 +21,11 @@ def main(SapModel):
     warning_df = col_df[col_df['WarningSummary'].str.strip().astype(bool)] # isolate which has warning which will be mostly delta_ns
     warning_df = warning_df.drop(['VMajorCombo', 'AVMajor', 'VMinorCombo', 'AVMinor'], axis=1) #inplace update
 
-    print(tabulate(warning_df, headers='keys', tablefmt='grid'))
-
-    for i in warning_df.Unique_Name:  #select locally buckled members
-        ops.set_frameselection(SapModel,i)
+    for i in warning_df.Unique_Name:
+        ops.set_frameselection(SapModel, i)
 
     csiutils.refresh(SapModel)
+    return warning_df
 
 if __name__ == "__main__":
     SapModel = csiutils.attach()

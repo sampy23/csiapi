@@ -11,7 +11,7 @@ def attach():
     helper = etabs.cHelper(etabs.Helper())
     try:
         etabs_object = etabs.cOAPI(helper.GetObject("CSI.ETABS.API.ETABSObject"))
-    except: # for version 22
+    except Exception: # for version 22
         etabs_object = etabs.cOAPI(helper.CreateObjectProgID("CSI.ETABS.API.ETABSObject"))
 
     SapModel = etabs_object.SapModel
@@ -32,8 +32,7 @@ def get_name(SapModel):
     """Returns: 'File name', 'extension', 'file path'"""
     try:
         file_path = SapModel.GetModelFilename() # absolute file path
-    except:
-        # logger.error("Model not found. Model might be closed or not captured by the software")
+    except Exception:
         return None
     else:
         if file_path: # if etabs opened with no specifice models

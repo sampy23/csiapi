@@ -51,6 +51,7 @@ def read_txt(file_name):
 #=======================================================================================================================
 def pretty_print(df):
     if isinstance(df,tuple):
-        [print(tabulate(i, headers='keys', tablefmt='grid')) for i in df] 
+        for i in df:
+            print(tabulate(i, headers='keys', tablefmt='grid'))
     else:
         print(tabulate(df, headers='keys', tablefmt='grid'))

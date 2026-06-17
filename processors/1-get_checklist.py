@@ -78,11 +78,11 @@ def framemodifier(SapModel):
                         "Shear_22_mod","Shear_33_mod","torsion_mod","MI_22_mod","MI_33_mod","mass_mod","weight_mod"])
     return modifier_df
 
-def main(SapModel):
-    csiutils.set_units(SapModel) # set to kNmc
-
-    utils.pretty_print(material_data(SapModel))
-    input("press enter to continue to next")
-    utils.pretty_print(frame_data(SapModel))
-    input("press enter to continue to next")
-    utils.pretty_print(framemodifier(SapModel))
+def main(SapModel) -> tuple:
+    """Returns (material_df, (prop_df, beamrebar_df, columnrebar_df), modifier_df)."""
+    csiutils.set_units(SapModel)
+    return (
+        material_data(SapModel),
+        frame_data(SapModel),
+        framemodifier(SapModel),
+    )

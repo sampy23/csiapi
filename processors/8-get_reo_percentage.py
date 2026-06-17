@@ -37,36 +37,29 @@ def calculate_ratio(col_name):
     return ratio, total_rebar_area, concrete_area
 
 
-def main(SapModel):
-
-    print("\nColumn Reinforcement Ratio Calculator")
-    print("Format: widthxlength_#Tdia")
-    print("Example: 400x600_8T25")
-    print("Enter 'q' to return to main menu\n")
-
-    while True:
-
-        col_name = input("Column: ").strip()
-
-        if col_name.lower() in ["q", "quit", "exit"]:
-            print("Returning to main menu...Press Enter..\n")
-            break
-
-        try:
-
-            ratio, steel_area, conc_area = calculate_ratio(col_name)
-
-            print(f"\nColumn: {col_name}")
-            print(f"Steel Area   = {round(steel_area,2)} mm²")
-            print(f"Concrete Area= {conc_area} mm²")
-            print(f"Rebar Ratio  = {ratio} %\n")
-
-        except ValueError as e:
-            print(f"Error: {e}\n")
-
+def main(SapModel, column_string: str) -> dict:
+    """Calculate rebar ratio for a single column string.
+    Returns dict with keys: column, steel_area, concrete_area, ratio."""
+    ratio, steel_area, conc_area = calculate_ratio(column_string)
+    return {
+        "column": column_string,
+        "steel_area_mm2": round(steel_area, 2),
+        "concrete_area_mm2": conc_area,
+        "ratio_pct": ratio,
+    }
 
 if __name__ == "__main__":
-
-    SapModel = csiutils.attach()
-
-    main(SapModel)
+    print("\nColumn Reinforcement Ratio Calculator")
+    print("Format: widthxlength_#Tdia  |  Example: 400x600_8T25")
+    print("Enter 'q' to exit\n")
+    while True:
+        col_name = input("Column: ").strip()
+        if col_name.lower() in ("q", "quit", "exit"):
+            break
+        try:
+            r = main(None, col_name)
+            print(f"  Steel Area    = {r['steel_area_mm2']} mm²")
+            print(f"  Concrete Area = {r['concrete_area_mm2']} mm²")
+            print(f"  Rebar Ratio   = {r['ratio_pct']} %\n")
+        except ValueError as e:
+            print(f"Error: {e}\n")

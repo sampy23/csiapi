@@ -1,98 +1,74 @@
 NAME = "Select Column by Axial force"
 DESCRIPTION = "Programs runs and designs the model and then allow user to select columns in particular range."
 REQUIRES_MODEL = True
+# No PARAMS — this processor is special-cased in main.py because it needs to
+# show statistics and a histogram before the user can enter meaningful bounds.
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.figure
 
-from csiapi import csiutils,ops,utils
-import ETABSv1 as etabs
+from csiapi import csiutils, ops
 
-def local():
-    input("Selection will be based on the combinations selected in the table of etabs model, press enter to continue: ")
-    # for some reason following will not work
-    # deselect all combo
-    # ret = SapModel.Results.Setup.DeselectAllCasesAndCombosForOutput()
-    # combo_list = utils.read_txt\
-    #         (r'C:\Users\Shahabaz.muhammed\OneDrive - Surbana Jurong Private Limited\.python\etabs\support_files\combos.txt')
-    # [SapModel.Results.Setup.SetComboSelectedForOutput(i,True) for i in combo_list]
-    # for i in combo_list:
-    #     check_combo = ops.set_combo(SapModel,i)
-    #     if check_combo:
-    #         pass
-    #     else:
-    #         print(f"Combination {i} not selected")
-    
-    SapModel = csiutils.attach()
+def get_compression(SapModel) -> pd.Series:
+    """Run analysis, design, and return per-column minimum axial force (compression)."""
     csiutils.run(SapModel)
-    csiutils.set_units(SapModel) # set to kNmc
+    csiutils.set_units(SapModel)
 
     design_concrete = ops.DesignConcrete(SapModel)
-
     df = design_concrete.all_column_design_forces()
-    df["P"] = pd.to_numeric(df["P"], errors="coerce") # to force dataframe which are not numeric to number
+    df["P"] = pd.to_numeric(df["P"], errors="coerce")
+    return df.groupby("Unique_Name")["P"].min()
 
-    # ----------------------------------
-    # FIND CONTROLLING LOAD COMBINATION FOR COMPRESSION
-    # ----------------------------------
+def compression_histogram(compression: pd.Series) -> matplotlib.figure.Figure:
+    """Return a matplotlib Figure of the axial load distribution histogram."""
+    fig, ax = plt.subplots()
+    ax.hist(compression.dropna(), bins=15)
+    ax.set_title("Column Axial Load Distribution")
+    ax.set_xlabel("Axial Force (kN)")
+    ax.set_ylabel("Number of Columns")
+    return fig
 
-    compression = df.groupby("Unique_Name")["P"].min() # targetting only compression
+def main(SapModel, lower_bound: float, upper_bound: float) -> pd.DataFrame:
+    """Select columns whose controlling compression is within [lower_bound, upper_bound].
+    Returns a DataFrame of the selected columns and their axial forces."""
+    compression = get_compression(SapModel)
 
-    frame_max = compression.idxmax()
-    frame_min = compression.idxmin()
+    selected = compression[
+        (compression >= lower_bound) & (compression <= upper_bound)
+    ]
+    selected_cols = list(set(selected.index.tolist()))
 
-    p_maxima = float(compression.max())
-    p_minima = float(compression.min())
+    SapModel.SelectObj.ClearSelection()
+    ops.set_frameselection(SapModel, selected_cols)
 
-    print("\nGoverning compression forces (10 most critical):\n")
-
-    print(
-        compression.sort_values().head(10)
-    )
-
-    print(f"\nMaximum axial load: {frame_max} → {p_maxima:.2f} kN")
-    print(f"Minimum axial load: {frame_min} → {p_minima:.2f} kN")
-
-    # ----------------------------------
-    # HISTOGRAM (LOAD DISTRIBUTION)
-    # ----------------------------------
-
-    plt.hist(compression.dropna(), bins=15)
-    plt.title("Column Axial Load Distribution")
-    plt.xlabel("Axial Force (kN)")
-    plt.ylabel("Number of Columns")
-    plt.show()
-
-
-    while True:
-        print(f"\nMinima is {p_minima:.2f}kN, Maxima is {p_maxima:.2f}kN")
-        lower_bound = utils.input_float("\nEnter the lower bound of the P value for member selection: ",\
-                            p_minima,p_maxima, \
-                            reminder="Please enter number which are within the maxima and minima obtained.")
-        upper_bound = utils.input_float("Enter the upper bound of the P value for member selection: ",\
-                            p_minima,p_maxima, \
-                            reminder="Please enter number which are within the maxima and minima obtained.")
-
-        if lower_bound > upper_bound: # Handling user mistake in upper and lower bound
-            lower_bound, upper_bound = upper_bound, lower_bound
-        
-        # --- SELECT MEMBERS ---
-        selected_max = compression[(compression >= lower_bound) & (compression <= upper_bound)]
-        # selected_min = pmin[(pmin >= lower_bound) & (pmin <= upper_bound)]
-        selected_cols = list(set(
-            selected_max.index.tolist()
-        ))
-
-        print(f"\nSelecting {len(selected_cols)} columns...")
-        SapModel.SelectObj.ClearSelection()
-        ops.set_frameselection(SapModel, selected_cols)
-
-        check_exit = input("\nPress Enter to continue and q to exit: ")
-        if check_exit.lower() == "q":
-            break
-        else:
-            continue
-
+    return selected.reset_index().rename(columns={"Unique_Name": "Column", "P": "Min_P_kN"})
 
 if __name__ == "__main__":
-    local()
+    import sys
+    from csiapi import utils
+
+    SapModel = csiutils.attach()
+    compression = get_compression(SapModel)
+
+    p_min = float(compression.min())
+    p_max = float(compression.max())
+
+    print("\nGoverning compression forces (10 most critical):\n")
+    print(compression.sort_values().head(10))
+    print(f"\nMaximum axial load: {p_max:.2f} kN")
+    print(f"Minimum axial load: {p_min:.2f} kN")
+
+    compression_histogram(compression).show()
+
+    while True:
+        print(f"\nRange: {p_min:.2f} kN to {p_max:.2f} kN")
+        lb = utils.input_float("Enter lower bound [kN]: ", p_min, p_max)
+        ub = utils.input_float("Enter upper bound [kN]: ", p_min, p_max)
+        if lb > ub:
+            lb, ub = ub, lb
+        result = main(SapModel, lb, ub)
+        print(f"\nSelected {len(result)} columns.")
+        utils.pretty_print(result)
+        if input("\nPress Enter to continue, q to exit: ").lower() == "q":
+            break

@@ -1,16 +1,19 @@
 NAME = "Delta_ns calculation for a column"
 DESCRIPTION = "The code calculates delta ns for a column and list it first 50 rows in descending order about minor direction"
 REQUIRES_MODEL = True
+PARAMS = {
+    "member_id": {"prompt": "Enter the Unique name of column: ", "type": str}
+}
 
 import pandas as pd
 import numpy as np
 import ETABSv1 as etabs
-from csiapi import csiutils,ops,utils
+from csiapi import csiutils, ops, utils
 
 
-def main (SapModel):
+def main(SapModel, member_id: str) -> pd.DataFrame:
 
-    memb_UN = input("Enter the Unique name of column: ")
+    memb_UN = member_id
 
     #Column design
     design_concrete = ops.DesignConcrete(SapModel)
@@ -96,9 +99,10 @@ def main (SapModel):
     df_target["delta_ns_3"] = df_target["Cm3"] / (1 - df_target["P"].abs()/(0.75*df_target["Pcr3"]))
 
 
-    df_print = df_target.sort_values("delta_ns_2",ascending=False).head(20)
-    utils.pretty_print(df_print)
+    df_print = df_target.sort_values("delta_ns_2", ascending=False).head(20)
+    return df_print
 
 if __name__ == "__main__":
     SapModel = csiutils.attach()
-    main(SapModel)
+    mid = input("Enter the Unique name of column: ")
+    utils.pretty_print(main(SapModel, mid))

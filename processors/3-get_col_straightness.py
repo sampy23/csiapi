@@ -27,8 +27,7 @@ def main (SapModel):
                     found = True
 
     if found:
-        print("Vertical bracing/inclined column found in the model!!!")
         csiutils.clear_selection(SapModel)
-        [ops.set_frameselection(SapModel,i) for i in frame_list]
-    else:
-        print("No vertical bracing/inclined column found in the model")
+        for i in frame_list:
+            ops.set_frameselection(SapModel, i)
+    return frame_list
